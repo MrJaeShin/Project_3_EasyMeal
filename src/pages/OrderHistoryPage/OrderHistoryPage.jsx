@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> ba4b33282e5f5fdfabb8b59644a5c99bf28ed650
 import * as usersService from '../../utilities/users-service';
 
 function OrderHistoryPage() {

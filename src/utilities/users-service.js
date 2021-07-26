@@ -7,31 +7,36 @@ export async function signUp(userData) {
 		// Delegate the network request code to the users-api.js API module
 		// which will ultimately return a JSON Web Token (JWT)
 		const token = await usersAPI.signUp(userData);
-		// Baby step by returning whaterver is sent back to the server
-		return token;
+		// Persist the "token"
+		localStorage.setItem('token', token);
+		return getUser();
 	} catch {
 		throw new Error('Invalid Sign Up');
 	}
 }
 
 export function getToken() {
-    const token = localStorage.getItem('token')
-    if (!token) return null;
-    const payload = JSON.parse(atob(token.split('.')[1]))
-    if (payload.exp<Date.now() /1000) {
-        localStorage.removeItem('token');
-        return null;
-    }
-    return getUser();
+	// getItem returns null if there's no string
+	const token = localStorage.getItem('token');
+	if (!token) return null;
+	// Check if expired, remove if it is
+	const payload = JSON.parse(atob(token.split('.')[1]));
+	// A JWT's exp is expressed in seconds, not milliseconds, so convert it
+	if (payload.exp < Date.now() / 1000) {
+		localStorage.removeItem('token');
+		return null;
+	}
+	return token;
 }
 
 export function getUser() {
-    const token = getToken();
-    return token ? JSON.parse(atob(token.split('.')[1])).user: null;
+	const token = getToken();
+	// If there's a token, return the user in the payload, otherwise return null
+	return token ? JSON.parse(atob(token.split('.')[1])).user : null;
 }
 
 export function logOut() {
-    localStorage.removeItem('token')
+	localStorage.removeItem('token');
 }
 
 export async function login(credentials) {
@@ -48,11 +53,6 @@ export async function login(credentials) {
 }
 
 export function checkToken() {
-<<<<<<< HEAD
-	alert('clicked');
-}
-=======
 	return usersAPI.checkToken().then(dateStr => new Date(dateStr));
 	// return a Date object for more flexibility
 }
->>>>>>> ba4b33282e5f5fdfabb8b59644a5c99bf28ed650
