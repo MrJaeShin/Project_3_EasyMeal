@@ -10,7 +10,6 @@ export default class SignUpForm extends Component {
 		error: '',
 	};
 
-	// The object passed to setState is merged with the current state
 	handleChange = evt => {
 		this.setState({
 			[evt.target.name]: evt.target.value,
@@ -21,19 +20,12 @@ export default class SignUpForm extends Component {
 	handleSubmit = async evt => {
 		evt.preventDefault();
 		try {
-			// We don't want to send the 'error' or 'confirm' property,
-			//  so let's make a copy of the state object, then delete them
 			const formData = { ...this.state };
 			delete formData.error;
 			delete formData.confirm;
-
-			// The promise returned by the signUp service method
-			// will resolve to the user object included in the
-			// payload of the JSON Web Token (JWT)
 			const user = await signUp(formData);
 			this.props.setUser(user);
 		} catch {
-			// An error occured
 			this.setState({ error: 'Sign Up Failed - Try Again' });
 		}
 	};
