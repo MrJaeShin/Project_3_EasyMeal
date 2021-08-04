@@ -13,7 +13,7 @@ import "./App.css";
 
 function App() {
   const [user, setUser] = useState(getUser());
-  const [updatedItem, setUpdatedItem] = useState(null);
+  const [updatedItem, setUpdatedItem] = useState();
   const history = useHistory();
 
   async function handleAddItem(item) {

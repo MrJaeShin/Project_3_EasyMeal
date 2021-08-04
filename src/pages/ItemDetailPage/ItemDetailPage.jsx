@@ -1,4 +1,3 @@
-import * as usersService from "../../utilities/users-service";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AddItemPage from "../AddItemPage/AddItemPage";
@@ -19,7 +18,7 @@ export default function ItemDetail({
   useEffect(() => {
     if (updatedItem) {
       setItemDetail(updatedItem);
-      toggleUpdateForm()
+      toggleUpdateForm();
     }
   }, [updatedItem]);
 

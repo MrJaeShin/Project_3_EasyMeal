@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 export default function AddItemPage({
   handleAddItem,
@@ -12,7 +12,7 @@ export default function AddItemPage({
   });
 
   useEffect(() => {
-    setItemData(itemDetail);
+    if (itemDetail) setItemData(itemDetail);
   }, [itemDetail]);
 
   function handleChange(evt) {

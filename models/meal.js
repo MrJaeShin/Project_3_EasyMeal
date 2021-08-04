@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const mealSchema = new Schema(
     {
-        name: { type: String},
+        name: { type: String },
         // mealType: { type: String},
         items: [{
             type: Schema.Types.ObjectId,

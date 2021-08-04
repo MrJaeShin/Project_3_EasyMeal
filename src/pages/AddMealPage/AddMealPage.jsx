@@ -26,9 +26,9 @@ export default function AddMealPage(props) {
     getItems();
   }, []);
 
-// event handlers
+  // event handlers
   function handleChange(evt) {
-    console.log(evt)
+    console.log(evt);
     setFormData({
       ...formData,
       [evt.target.name]: evt.target.value,
@@ -37,15 +37,15 @@ export default function AddMealPage(props) {
   function handleAddMeal() {
     setFormData({
       ...formData,
-      items: selectedItems
-    })
-    console.log(selectedItems, formData)
+      items: selectedItems,
+    });
+    console.log(selectedItems, formData);
     props.handleCreateMeal(formData);
     console.log("we are going to add the meal");
   }
 
   function handleAddItemToMeal(item) {
-    setSelectedItem([...selectedItems, item])
+    setSelectedItem([...selectedItems, item]);
   }
 
   return (

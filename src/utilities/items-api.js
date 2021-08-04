@@ -3,7 +3,7 @@ import sendRequest from './send-request-api';
 const BASE_URL = '/api/items';
 
 export function create(item) {
-    return sendRequest(BASE_URL, 'POST', item);
+	return sendRequest(BASE_URL, 'POST', item);
 }
 
 export function getAll() {
@@ -19,5 +19,5 @@ export function update(updatedItem) {
 }
 
 export function deleteOne(id) {
-	return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
+	return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
 }
