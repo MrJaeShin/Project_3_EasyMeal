@@ -1,25 +1,44 @@
-import * as usersService from '../../utilities/users-service';
+import * as usersService from "../../utilities/users-service";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import AddItemPage from "../AddItemPage/AddItemPage";
 
+export default function ItemDetail({
+  handleDeleteItem,
+  handleEditItem,
+  updatedItem,
+}) {
+  const location = useLocation();
+  const [itemDetail, setItemDetail] = useState({});
+  const [shouldUpdate, setShouldUpdate] = useState(false);
 
-export default function ItemDetail(props) {
-    const location = useLocation();
-    const [itemDetail, setItemDetail] = useState({});
- 
-    useEffect(() => {
-        console.log(location.state);
-        setItemDetail(location.state);
-     }, [location]);
+  useEffect(() => {
+    setItemDetail(location.state);
+  }, [location]);
 
-    return(
-        <main className="ItemDetail">
-            <h1>Item Details</h1>
-            <div>Item Name: {itemDetail.itemName}</div>
-            <div>Calories: {itemDetail.itemCalories}</div>
-            <div>Category: {itemDetail.itemCategory}</div>
-            <button>Update</button>
-            <button>Delete</button>
-        </main>
-    )
+  useEffect(() => {
+    if (updatedItem) {
+      setItemDetail(updatedItem);
+      toggleUpdateForm()
+    }
+  }, [updatedItem]);
+
+  function toggleUpdateForm() {
+    setShouldUpdate(!shouldUpdate);
+  }
+
+  return (
+    <main className="ItemDetail">
+      <h1>Item Details</h1>
+      <div>Item Name: {itemDetail.itemName}</div>
+      <div>Calories: {itemDetail.itemCalories}</div>
+      <div>Category: {itemDetail.itemCategory}</div>
+      <button onClick={toggleUpdateForm}>Update</button>
+      <button onClick={() => handleDeleteItem(itemDetail)}>Delete</button>
+      <hr></hr>
+      {shouldUpdate && (
+        <AddItemPage itemDetail={itemDetail} handleEditItem={handleEditItem} />
+      )}
+    </main>
+  );
 }

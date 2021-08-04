@@ -1,11 +1,19 @@
 import { useState, useEffect, useRef } from "react";
 
-export default function AddItemPage(props) {
+export default function AddItemPage({
+  handleAddItem,
+  itemDetail,
+  handleEditItem,
+}) {
   const [itemData, setItemData] = useState({
     itemName: "",
     itemCalories: 0,
-    itemCategory: 'protein',
+    itemCategory: "protein",
   });
+
+  useEffect(() => {
+    setItemData(itemDetail);
+  }, [itemDetail]);
 
   function handleChange(evt) {
     setItemData({
@@ -13,10 +21,10 @@ export default function AddItemPage(props) {
       [evt.target.name]: evt.target.value,
     });
   }
- 
+
   async function handleSubmit(evt) {
     evt.preventDefault();
-    props.handleAddItem(itemData);
+    itemDetail ? handleEditItem(itemData) : handleAddItem(itemData);
   }
 
   return (
@@ -50,7 +58,11 @@ export default function AddItemPage(props) {
             <option value="carb">Carbs</option>
             <option value="veggie/fruit">Veggie/Fruit</option>
           </select>
-          <button type="submit">Add</button>
+          {itemDetail ? (
+            <button type="submit">Update</button>
+          ) : (
+            <button type="submit">Add</button>
+          )}
         </form>
       </div>
       {/* <p className="error-message">&nbsp;{this.state.error}</p> */}
