@@ -5,6 +5,7 @@ module.exports = {
     create,
     show,
     delete: deleteOne,
+    createMeal
 };
 
 async function allMeals(req, res) {
@@ -26,3 +27,7 @@ async function deleteOne(req, res) {
     const deletedMeal = await Meal.findByIdAndRemove(req.params.id);
     res.status(200).json(deletedMeal);
 }
+// async function createMeal(req,res){
+
+//     const newMeal = await Meal.
+// }

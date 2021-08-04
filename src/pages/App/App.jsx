@@ -23,17 +23,7 @@ function App() {
   async function handleEditItem(item) {
     const detailResponse = await itemsAPI.update(item);
     history.push({
-      pathname:"/meal/add"
-    });
-  }
-  async function handleShowDetail(item) {
-    const itemDetailResponse = await itemsAPI.getById(item._id);
-    setUpdatedItem(itemDetailResponse)
-  }
-  async function handleCreateMeal(meal) {
-    //const mealResponse = await mealsAPI.create(meal);
-    history.push({
-      pathname: "/meal",
+      pathname: "/meal/add",
     });
   }
 
@@ -43,6 +33,18 @@ function App() {
       pathname: "/meal/add",
     });
   }
+
+  async function handleCreateMeal(meal) {
+    const mealResponse = await mealsAPI.create(meal);
+    console.log(mealResponse);
+    // history.push({
+    //   pathname: "/meal",
+    // });
+  }
+
+ 
+
+
 
   return (
     <main className="App">
@@ -55,7 +57,6 @@ function App() {
             </Route>
             <Route path="/item/detail">
               <ItemDetailPage
-                handleShowDetail={handleShowDetail}
                 handleEditItem={handleEditItem}
                 handleDeleteItem={handleDeleteItem}
               />

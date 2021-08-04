@@ -5,7 +5,6 @@ import AddItemPage from "../AddItemPage/AddItemPage";
 export default function ItemDetail({
   handleDeleteItem,
   handleEditItem,
-  handleShowDetail
 }) {
   const location = useLocation();
   const [itemDetail, setItemDetail] = useState({});

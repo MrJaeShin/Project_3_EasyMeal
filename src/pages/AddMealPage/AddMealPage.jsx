@@ -18,6 +18,7 @@ export default function AddMealPage(props) {
       handleAddToMeal={handleAddItemToMeal}
     />
   ));
+
   useEffect(() => {
     async function getItems() {
       const items = await itemsAPI.getAll();
@@ -33,16 +34,29 @@ export default function AddMealPage(props) {
       [evt.target.name]: evt.target.value,
     });
   }
-  function handleAddMeal() {
-    setFormData({
-      ...formData,
-      items: selectedItems,
+
+   function handleAddMeal() {
+    setFormData(() => {
+      let model = {
+        name: formData.name,
+        item: selectedItems,
+      };
+      console.log('calling props to handle meal create')
+      props.handleCreateMeal(model);
+      return { model };
     });
-    props.handleCreateMeal(formData);
   }
 
   function handleAddItemToMeal(item) {
-    setSelectedItem([...selectedItems, item]);
+    console.log(item);
+    setSelectedItem((prevItem) => prevItem.concat(item));
+  }
+
+  function resetAddMeal(){
+    setFormData({
+      name: "",
+      items: [],
+    })
   }
 
   return (
@@ -58,7 +72,7 @@ export default function AddMealPage(props) {
       />
       <h3>list of items</h3>
       {listItem}
-      <button className="btn-sm" onClick={() => handleAddMeal}>
+      <button className="btn-sm" onClick={handleAddMeal}>
         ADD
       </button>
     </main>

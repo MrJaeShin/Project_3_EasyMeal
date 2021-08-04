@@ -24,7 +24,16 @@ export default function AddItemPage({
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    itemDetail ? handleEditItem(itemData) : handleAddItem(itemData);
+    itemDetail ? await handleEditItem(itemData) : await handleAddItem(itemData);
+    return resetData();
+  }
+
+  function resetData(){
+    setItemData({
+      itemName: "",
+      itemCalories: 0,
+      itemCategory: "protein",
+    })
   }
 
   return (
