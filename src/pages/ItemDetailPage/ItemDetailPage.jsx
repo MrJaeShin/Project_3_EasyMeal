@@ -5,22 +5,15 @@ import AddItemPage from "../AddItemPage/AddItemPage";
 export default function ItemDetail({
   handleDeleteItem,
   handleEditItem,
-  updatedItem,
+  handleShowDetail
 }) {
   const location = useLocation();
   const [itemDetail, setItemDetail] = useState({});
   const [shouldUpdate, setShouldUpdate] = useState(false);
-
+ 
   useEffect(() => {
     setItemDetail(location.state);
   }, [location]);
-
-  useEffect(() => {
-    if (updatedItem) {
-      setItemDetail(updatedItem);
-      toggleUpdateForm();
-    }
-  }, [updatedItem]);
 
   function toggleUpdateForm() {
     setShouldUpdate(!shouldUpdate);

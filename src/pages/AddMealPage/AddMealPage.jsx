@@ -28,7 +28,6 @@ export default function AddMealPage(props) {
 
   // event handlers
   function handleChange(evt) {
-    console.log(evt);
     setFormData({
       ...formData,
       [evt.target.name]: evt.target.value,
@@ -39,9 +38,7 @@ export default function AddMealPage(props) {
       ...formData,
       items: selectedItems,
     });
-    console.log(selectedItems, formData);
     props.handleCreateMeal(formData);
-    console.log("we are going to add the meal");
   }
 
   function handleAddItemToMeal(item) {
