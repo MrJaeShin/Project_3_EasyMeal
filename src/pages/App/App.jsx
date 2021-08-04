@@ -7,6 +7,7 @@ import AuthPage from "../AuthPage/AuthPage";
 import AddItemPage from "../AddItemPage/AddItemPage";
 import AddMealPage from "../AddMealPage/AddMealPage";
 import MealListPage from "../MealListPage/MealListPage";
+import ItemDetailPage from "../ItemDetailPage/ItemDetailPage"
 import NavBar from "../../components/NavBar/NavBar";
 import "./App.css";
 
@@ -31,6 +32,9 @@ function App() {
           <Switch>
             <Route path="/item/add">
               <AddItemPage handleAddItem={handleAddItem} />
+            </Route>
+            <Route path="/item/detail">
+              <ItemDetailPage />
             </Route>
             <Route path="/meal/add">
               <AddMealPage handleCreateMeal={handleCreateMeal} />

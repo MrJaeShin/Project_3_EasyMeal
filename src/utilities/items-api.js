@@ -13,3 +13,11 @@ export function getAll() {
 export function getById(id) {
 	return sendRequest(`${BASE_URL}/${id}`);
 }
+
+export function update(updatedItem) {
+	return sendRequest(`${BASE_URL}/${updatedItem._id}`, 'PUT', updatedItem);
+}
+
+export function deleteOne(id) {
+	return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
+}

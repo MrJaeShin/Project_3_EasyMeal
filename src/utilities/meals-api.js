@@ -14,10 +14,6 @@ export function create(meal) {
     return sendRequest(BASE_URL, 'POST', meal);
 }
 
-export function update(updatedMeal) {
-    return sendRequest(`${BASE_URL}/${updatedMeal._id}`, 'PUT', updatedMeal);
-}
-
 export function deleteOne(id) {
     return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
 }
