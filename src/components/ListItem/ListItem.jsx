@@ -1,16 +1,16 @@
 import { useHistory } from "react-router-dom";
 
 export default function ListItem({ item, handleAddToMeal }) {
-    const history = useHistory();
+  const history = useHistory();
 
-    function showDetail(){
-        history.push({
-            pathname: "/item/detail",
-            state: item
-        })
-    }
+  function showDetail() {
+    history.push({
+      pathname: "/item/detail",
+      state: item,
+    });
+  }
 
-    return (
+  return (
     <div className="ListItem">
       <span className="name">{item.itemName}</span>
       <button className="btn-sm" onClick={() => handleAddToMeal(item)}>

@@ -2,14 +2,11 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AddItemPage from "../AddItemPage/AddItemPage";
 
-export default function ItemDetail({
-  handleDeleteItem,
-  handleEditItem,
-}) {
+export default function ItemDetail({ handleDeleteItem, handleEditItem }) {
   const location = useLocation();
   const [itemDetail, setItemDetail] = useState({});
   const [shouldUpdate, setShouldUpdate] = useState(false);
- 
+
   useEffect(() => {
     setItemDetail(location.state);
   }, [location]);

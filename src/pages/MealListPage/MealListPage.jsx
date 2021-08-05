@@ -18,7 +18,7 @@ function MealListPage({ handleDeleteMeal }) {
   }, []);
 
   function goToDetails(meal) {
-    console.log(meal)
+    console.log(meal);
     history.push({
       pathname: "/meal/detail",
       state: meal,

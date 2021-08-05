@@ -35,13 +35,13 @@ export default function AddMealPage(props) {
     });
   }
 
-   function handleAddMeal(evt) {
+  function handleAddMeal(evt) {
     setFormData(() => {
       let model = {
         name: formData.name,
         item: selectedItems,
       };
-      console.log('calling props to handle meal create')
+      console.log("calling props to handle meal create");
       props.handleCreateMeal(model);
       return { model };
     });
@@ -52,11 +52,11 @@ export default function AddMealPage(props) {
     setSelectedItem((prevItem) => prevItem.concat(item));
   }
 
-  function resetAddMeal(){
+  function resetAddMeal() {
     setFormData({
       name: "",
       items: [],
-    })
+    });
   }
 
   return (
@@ -70,10 +70,10 @@ export default function AddMealPage(props) {
         onChange={handleChange}
         required
       />
-      <h3>list of items</h3>
+      <h3>List of Items</h3>
       {listItem}
       <button className="btn-sm" onClick={handleAddMeal}>
-        ADD
+        Add Meal
       </button>
     </main>
   );

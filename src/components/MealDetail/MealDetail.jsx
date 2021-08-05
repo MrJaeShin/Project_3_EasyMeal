@@ -1,7 +1,20 @@
 import { useEffect, useState } from "react";
 
 export default function MealDetail({ mealDetail }) {
-  
+  const [totalCalories, setTotalCalories] = useState(0);
+
+  useEffect(() => {
+    getTotalCalories();
+  }, [mealDetail]);
+  function getTotalCalories() {
+    console.log("inside if");
+    if (mealDetail.itemLists) {
+      let calories = mealDetail.itemLists.reduce(
+        (a, b) => Number(a.itemCalories) + Number(b.itemCalories)
+      );
+      setTotalCalories(calories);
+    }
+  }
 
   return (
     <>
@@ -16,7 +29,7 @@ export default function MealDetail({ mealDetail }) {
           ))}
         </div>
       )}
-      <div>Total calories {}</div>
+      <div>Total calories: {totalCalories} cal</div>
     </>
   );
 }
