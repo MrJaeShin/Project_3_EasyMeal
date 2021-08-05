@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ListItem from "../../components/ListItem/ListItem";
 import * as itemsAPI from "../../utilities/items-api";
-import * as mealsAPI from "../../utilities/meals-api";
 
 export default function AddMealPage(props) {
   const [items, setItems] = useState([]);
@@ -29,13 +28,14 @@ export default function AddMealPage(props) {
 
   // event handlers
   function handleChange(evt) {
+    evt.preventDefault();
     setFormData({
       ...formData,
       [evt.target.name]: evt.target.value,
     });
   }
 
-  function handleAddMeal(evt) {
+  function handleAddMeal() {
     setFormData(() => {
       let model = {
         name: formData.name,
@@ -52,12 +52,12 @@ export default function AddMealPage(props) {
     setSelectedItem((prevItem) => prevItem.concat(item));
   }
 
-  function resetAddMeal() {
-    setFormData({
-      name: "",
-      items: [],
-    });
-  }
+  // function resetAddMeal() {
+  //   setFormData({
+  //     name: "",
+  //     items: [],
+  //   });
+  // }
 
   return (
     <main className="ListItem">
@@ -70,11 +70,19 @@ export default function AddMealPage(props) {
         onChange={handleChange}
         required
       />
-      <h3>List of Items</h3>
-      {listItem}
-      <button className="btn-sm" onClick={handleAddMeal}>
-        Add Meal
-      </button>
+      <aside className="ItemList">
+        <h3>List of Items</h3>
+        {listItem}
+      </aside>
+      <aside className="Tray">
+      <h3>Tray</h3>
+        {selectedItems.map((item, idx) =>(
+            <div key={idx}>{item.itemName}</div>
+        ))}
+        <button className="btn-sm" onClick={handleAddMeal}>
+          Add Meal
+        </button>
+      </aside>
     </main>
   );
 }

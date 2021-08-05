@@ -38,6 +38,7 @@ export default function AddItemPage({
 
   return (
     <main className="AddItemPage">
+      <h3>Add Item</h3>
       <div className="form-container">
         <form autoComplete="off" onSubmit={handleSubmit}>
           <label>Name</label>

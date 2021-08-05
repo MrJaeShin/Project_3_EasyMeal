@@ -4,17 +4,18 @@ export default function MealDetail({ mealDetail }) {
   const [totalCalories, setTotalCalories] = useState(0);
 
   useEffect(() => {
-    getTotalCalories();
+      console.log(mealDetail.itemLists)
+      if (mealDetail.itemLists) {
+        console.log('totalCal')
+        let totalCal = 10;
+        for (let i = 0; i < mealDetail.itemLists.length; i++) {
+          totalCal += parseInt(mealDetail.itemLists[i].itemCalories);
+        }
+        setTotalCalories(totalCal);
+      }
+   // }
+    //getTotalCalories();
   }, [mealDetail]);
-  function getTotalCalories() {
-    console.log("inside if");
-    if (mealDetail.itemLists) {
-      let calories = mealDetail.itemLists.reduce(
-        (a, b) => Number(a.itemCalories) + Number(b.itemCalories)
-      );
-      setTotalCalories(calories);
-    }
-  }
 
   return (
     <>
@@ -29,7 +30,8 @@ export default function MealDetail({ mealDetail }) {
           ))}
         </div>
       )}
-      <div>Total calories: {totalCalories} cal</div>
+      <br></br>
+      <div><strong>Total calories:</strong> {totalCalories} cal</div>
     </>
   );
 }

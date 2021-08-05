@@ -14,36 +14,37 @@ import "./App.css";
 
 function App() {
   const [user, setUser] = useState(getUser());
-  const [updatedItem, setUpdatedItem] = useState();
   const history = useHistory();
 
   async function handleAddItem(item) {
-    const itemResponse = await itemsAPI.create(item);
+    await itemsAPI.create(item);
   }
 
   async function handleEditItem(item) {
-    const detailResponse = await itemsAPI.update(item);
+    await itemsAPI.update(item);
     history.push({
       pathname: "/meal/add",
     });
   }
 
   async function handleDeleteItem(item) {
-    const itemResponse = await itemsAPI.deleteOne(item._id);
+    await itemsAPI.deleteOne(item._id);
     history.push({
       pathname: "/meal/add",
     });
   }
 
   async function handleCreateMeal(meal) {
-    // const mealResponse = await mealsAPI.create(meal);
-    const test = await mealsAPI.createMeal(meal);
-    // history.push({()
-    //   pathname: "/meal",
-    // });
+    await mealsAPI.createMeal(meal);
+    history.push({
+      pathname: "/meal",
+    });
   }
   async function handleDeleteMeal(meal) {
-    const deletedMeal = await mealsAPI.deleteOne(meal._id);
+    await mealsAPI.deleteOne(meal._id);
+    history.push({
+      pathname: "/meal",
+    });
   }
 
   return (
