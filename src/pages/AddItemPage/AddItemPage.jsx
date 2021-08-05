@@ -75,7 +75,6 @@ export default function AddItemPage({
           )}
         </form>
       </div>
-      {/* <p className="error-message">&nbsp;{this.state.error}</p> */}
     </main>
   );
 }

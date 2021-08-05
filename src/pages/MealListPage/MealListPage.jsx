@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import * as usersService from "../../utilities/users-service";
 import * as mealsAPI from "../../utilities/meals-api";
-import { set } from "mongoose";
 
 function MealListPage({ handleDeleteMeal }) {
   const history = useHistory();
@@ -18,7 +16,6 @@ function MealListPage({ handleDeleteMeal }) {
   }, []);
 
   function goToDetails(meal) {
-    console.log(meal);
     history.push({
       pathname: "/meal/detail",
       state: meal,
