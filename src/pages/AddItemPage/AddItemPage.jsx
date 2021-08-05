@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function AddItemPage({
   handleAddItem,
@@ -28,12 +28,12 @@ export default function AddItemPage({
     return resetData();
   }
 
-  function resetData(){
+  function resetData() {
     setItemData({
       itemName: "",
       itemCalories: 0,
       itemCategory: "protein",
-    })
+    });
   }
 
   return (

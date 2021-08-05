@@ -18,6 +18,6 @@ export function deleteOne(id) {
     return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
 }
 
-// export function createMeal(meal){
-//     return sendRequest(BASE_URL,'POST', meal);
-// }
+export function createMeal(meal){
+    return sendRequest(`${BASE_URL}/create`,'POST', meal);
+}

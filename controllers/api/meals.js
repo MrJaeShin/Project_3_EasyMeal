@@ -27,7 +27,18 @@ async function deleteOne(req, res) {
     const deletedMeal = await Meal.findByIdAndRemove(req.params.id);
     res.status(200).json(deletedMeal);
 }
-// async function createMeal(req,res){
+async function createMeal(req,res){
+   
+    
+    const newMeal = await Meal.create(req.body)
+    Meal.findById(newMeal._id, function(err,meal){
+        meal.itemLists = req.body.item;
+        meal.save(function(err,meal){
+            console.log(meal);
+            return res.status(200).json(meal);
 
-//     const newMeal = await Meal.
-// }
+        });
+    })
+    // res.status(200).json(newMeal);
+    
+}

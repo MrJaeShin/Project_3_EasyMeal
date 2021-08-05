@@ -5,7 +5,7 @@ export default function ListItem({ item, handleAddToMeal }) {
 
     function showDetail(){
         history.push({
-            pathname: '/item/detail',
+            pathname: "/item/detail",
             state: item
         })
     }

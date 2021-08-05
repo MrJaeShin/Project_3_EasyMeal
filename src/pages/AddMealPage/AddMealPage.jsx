@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ListItem from "../../components/ListItem/ListItem";
 import * as itemsAPI from "../../utilities/items-api";
 import * as mealsAPI from "../../utilities/meals-api";
@@ -35,7 +35,7 @@ export default function AddMealPage(props) {
     });
   }
 
-   function handleAddMeal() {
+   function handleAddMeal(evt) {
     setFormData(() => {
       let model = {
         name: formData.name,

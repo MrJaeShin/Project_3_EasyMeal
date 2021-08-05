@@ -1,29 +1,39 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import * as usersService from "../../utilities/users-service";
 import * as mealsAPI from "../../utilities/meals-api";
 import { set } from "mongoose";
 
-function MealListPage() {
+function MealListPage({ handleDeleteMeal }) {
+  const history = useHistory();
+
   const [allMeals, setAllMeals] = useState([]);
 
   useEffect(() => {
     async function getAllMeals() {
       const allMeals = await mealsAPI.getAll();
-      setAllMeals(allMeals)
-      console.log(setAllMeals);
+      setAllMeals(allMeals);
     }
     getAllMeals();
   }, []);
 
-  async function handleCheckToken() {
-    const expDate = await usersService.checkToken();
-    console.log(expDate);
+  function goToDetails(meal) {
+    console.log(meal)
+    history.push({
+      pathname: "/meal/detail",
+      state: meal,
+    });
   }
-
   return (
     <main className="MealListPage">
       <h1>Meal List</h1>
-      <button onClick={handleCheckToken}>Check When My Login Expires</button>
+      {allMeals.map((meal) => (
+        <div className="Meal" key={meal._id}>
+          {meal.name}
+          <button onClick={() => goToDetails(meal)}>Detail</button>
+          <button onClick={() => handleDeleteMeal(meal)}>Delete</button>
+        </div>
+      ))}
     </main>
   );
 }
