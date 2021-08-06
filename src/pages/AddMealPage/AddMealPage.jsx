@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ListItem from "../../components/ListItem/ListItem";
 import * as itemsAPI from "../../utilities/items-api";
+import "./AddMealPage.css";
 
 export default function AddMealPage(props) {
   const [items, setItems] = useState([]);
@@ -50,29 +51,32 @@ export default function AddMealPage(props) {
   }
 
   return (
-    <main className="ListItem">
+    <>
       <h1>Create a meal</h1>
-      <input
-        placeholder="Enter Meal Name"
-        type="text"
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-        required
-      />
-      <aside className="ItemList">
-        <h3>List of Items</h3>
-        {listItem}
-      </aside>
-      <aside className="Tray">
-        <h3>Tray</h3>
-        {selectedItems.map((item, idx) => (
-          <div key={idx}>{item.itemName}</div>
-        ))}
-        <button className="btn-sm" onClick={handleAddMeal}>
-          Add Meal
-        </button>
-      </aside>
-    </main>
+      <main className="container">
+        <aside className="item-a">
+          <h3>List of Items</h3>
+          {listItem}
+        </aside>
+        <aside className="item-b">
+          <h3>Tray</h3>
+          <input
+            placeholder="Enter Meal Name"
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+          <br></br>
+          {selectedItems.map((item, idx) => (
+            <div key={idx}>{item.itemName}</div>
+          ))}
+          <button className="btn-sm" onClick={handleAddMeal}>
+            Create Meal
+          </button>
+        </aside>
+      </main>
+    </>
   );
 }

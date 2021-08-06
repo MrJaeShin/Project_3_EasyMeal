@@ -1,0 +1,25 @@
+.container {
+    justify-content: center;
+    grid-template-columns:  5fr 5fr;
+    display: flex;
+}
+
+.item-a {
+    flex-direction: column;
+    background-color: var(--tan-1);
+    justify-content: space-between;
+    margin: 3vmin 2vmin;
+    width: 50%;
+    border-radius: 15%;
+    padding-bottom: 15px;
+}
+
+.item-b {
+    flex-direction: column;
+    background-color: var(--tan-1);
+    justify-content: space-between;
+    margin: 3vmin 2vmin;
+    width: 50%;
+    border-radius: 15%;
+    padding-bottom: 15px;
+}

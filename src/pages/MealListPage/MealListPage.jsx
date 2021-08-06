@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import * as mealsAPI from "../../utilities/meals-api";
+import "./MealListPage.css";
 
 function MealListPage({ handleDeleteMeal }) {
   const history = useHistory();
@@ -22,16 +23,20 @@ function MealListPage({ handleDeleteMeal }) {
     });
   }
   return (
-    <main className="MealListPage">
+    <>
       <h1>Meal List</h1>
-      {allMeals.map((meal) => (
-        <div className="Meal" key={meal._id}>
-          {meal.name}
-          <button onClick={() => goToDetails(meal)}>Detail</button>
-          <button onClick={() => handleDeleteMeal(meal)}>Delete</button>
-        </div>
-      ))}
-    </main>
+      <main className="container">
+        <article className="item-c">
+        {allMeals.map((meal) => (
+          <div className="meal" key={meal._id}>
+            {meal.name}
+            <button onClick={() => goToDetails(meal)}>Detail</button>
+            <button onClick={() => handleDeleteMeal(meal)}>Delete</button>
+          </div>
+        ))}
+        </article>
+      </main>
+    </>
   );
 }
 export default MealListPage;
