@@ -16,7 +16,8 @@ If a user can't find the item they would like to add in the meal, user may input
 
 User can see the meals that everyone created and see the detail of the meal, which in this case is meal name, ingredient name and calories, as well as calculated total calories. User can also delete meals.
 
-Visit the app here! ==> [EasyMeal APP](heroku app url)
+Visit the app here! ==> [EasyMeal APP](https://git.heroku.com/project3-easymeal.git)
+
 Trello Board ==> [Trello Board](https://trello.com/b/ecEKzMC3/project-3)
 
 ## Technologies Used :
