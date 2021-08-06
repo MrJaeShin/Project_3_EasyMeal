@@ -5,7 +5,7 @@
 ![Screenshot](/public/images/MealListPage.png)
 ![Screenshot](/public/images/AddItemPage.png)
 ![Screenshot](/public/images/AddMealPage.png)
-![Screenshot](/public/images/MealDetail.png)
+![Screenshot](/public/images/MealDetailPage.png)
 ![Screenshot](/public/images/ItemDetailPage.png)
 
 ## Overview :
